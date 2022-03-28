@@ -12,7 +12,6 @@
 - Установить библиотеки
 ```
 pip install fast_bitrix24 requests 
-
 ```
 - На портале создать входящий вебхук с доступом к CRM
 - Записать вебхук из б24 в переменную `webhook`
@@ -21,7 +20,4 @@ pip install fast_bitrix24 requests
 
 ## Для очищения портала
 `python3 kill_all.py`
-
-### Адрес портала для тестов
-https://b24-rfzucy.bitrix24.ru/
 
