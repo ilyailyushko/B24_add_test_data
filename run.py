@@ -1,16 +1,28 @@
-from fast_bitrix24 import Bitrix
 
-# замените на ваш вебхук для доступа к Bitrix24
-webhook = "https://b24-rfzucy.bitrix24.ru/rest/1/tk6h8ntighkqlp8d/"
-b = Bitrix(webhook)
+import func
+import random
+
+# создем на портале рандомные контакты
+for i in range(50):
+     func.add_random_contact()
 
 
-# список сделок в работе, включая пользовательские поля
-deals = b.get_all(
-    'crm.deal.list',
-    params={
-        'select': ['*', 'UF_*'],
-        'filter': {'CLOSED': 'N'}
-})
+# получаем список ID всех контактов на портале
+contacts_id = func.get_contacts()
 
-print(deals)
+
+# Получаем список стадий сделок
+crm_stage_list = func.crm_deal_stage_list()
+print(crm_stage_list)
+
+
+# Для каждого контакта создаем от 1 до 4 сделок в рандомной стадии.
+for i in contacts_id:
+    
+    d_amount = random.randint(1, 4)
+
+    for d in range(d_amount):
+        stage = random.choice(crm_stage_list)
+        title = random.choice(['Покупка товара', 'Покупка услуги', 'Покупка товара и услуги', 'Доп. услуги'])
+        func.add_deal(title, i, stage, random.randint(1000, 15000))
+
