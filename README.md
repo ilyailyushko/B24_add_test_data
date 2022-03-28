@@ -14,7 +14,7 @@
 pip install fast_bitrix24 requests 
 ```
 - На портале создать входящий вебхук с доступом к CRM
-- Записать вебхук из б24 в переменную `webhook`
+- Записать вебхук из б24 в переменную `webhook`  в файле `func.py`
 - Запустить run.py
 `python3 run.py`
 
