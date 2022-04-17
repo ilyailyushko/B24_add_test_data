@@ -2,9 +2,15 @@
 import func
 import random
 
-# создем на портале рандомные контакты
-for i in range(50):
-     func.add_random_contact()
+# Получаем список сотрудников указанного отдела
+target_users = func.get_all_users_by_department(5)
+print(target_users)
+
+
+# создаем на портале рандомные контакты
+for i in range(400):
+     new_cont = func.add_random_contact(random.choice(target_users))
+     print('Создан новый контакт', new_cont)
 
 
 # получаем список ID всех контактов на портале
@@ -14,6 +20,7 @@ contacts_id = func.get_contacts()
 # Получаем список стадий сделок
 crm_stage_list = func.crm_deal_stage_list()
 print(crm_stage_list)
+
 
 
 # Для каждого контакта создаем от 1 до 4 сделок в рандомной стадии.
